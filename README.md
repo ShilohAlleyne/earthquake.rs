@@ -2,6 +2,8 @@
 
 `earthquake.rs` is a simple tui dashboard of the provided client data. Given that this was framed as a technical assessment, and not a insurance test, the analytics in this program are rudamenatry, instead the focus is on presenting the client data so that they can gain a clear understanding of their portfolio. It is written entirely in Rust.
 
+![dashboard](https://github.com/user-attachments/assets/609c175b-2f3d-46e2-95d7-a6e7835997ad)
+
 ## Features
 
 - Fully rendered Terminal Dashboard via the *Ratatui* crate.
