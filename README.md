@@ -34,7 +34,7 @@ This will install *rustup*, which is a tool that manages both *Rust* and *Cargo*
 
 ## Operating the Program
 
-First clone this repo into the desired location, then the program can be started with the command: *cargo run*
+First clone this repo into the desired location, cd into the newly cloned directory, then the program can be started with the command: *cargo run*
 - press 'q' to close the dashboard
 
 Tests can evaluated using the command: *cargo test*
