@@ -4,12 +4,13 @@ use color_eyre::Result;
 use ratatui::{
     crossterm::event::{self, Event, KeyCode, KeyEventKind},
     layout::{Constraint, Direction, Layout},
-    style::{Color, Style, Stylize},
+    style::{Color, Style},
     text::{Line, Text},
-    widgets::{block::title, Bar, BarChart, BarGroup, Block, Borders, Cell, Padding, Row, Table},
+    widgets::{Bar, BarChart, BarGroup, Block, Borders, Cell, Row, Table},
     DefaultTerminal, Frame,
 };
 
+// Data presented to client
 pub struct App {
     client_data: Vec<(Asset, Risk)>,
     eq_occ_by_state: Vec<(String, usize)>,
@@ -19,6 +20,9 @@ pub struct App {
 
 impl App {
     // Load app
+    // Shortcut:
+    // By preloading our data, and then starting the app,
+    // we can sidestep the complexities of Async rust event loops and such
     pub fn new(
         client_data: Vec<(Asset, Risk)>,
         eq_occ_by_state: Vec<(String, usize)>,
@@ -31,7 +35,8 @@ impl App {
             exit: false,
         }
     }
-
+    
+    // Run the app rendering loop
     pub fn run(mut self, mut terminal: DefaultTerminal) -> Result<()> {
         while !self.exit {
             terminal.draw(|frame| self.draw(frame))?;
@@ -40,6 +45,7 @@ impl App {
         Ok(())
     }
 
+    // Quit App
     fn handle_events(&mut self) -> Result<()> {
         if let Event::Key(key) = event::read()? {
             if key.kind == KeyEventKind::Press && key.code == KeyCode::Char('q') {
@@ -126,9 +132,9 @@ fn client_data_portfolio<'a>(data: &[(Asset, Risk)]) -> Table<'a> {
                 .map(|content| Cell::from(Text::from(format!("\n{content}\n"))))
                 .collect::<Row>()
                 .style(Style::new().bg(colour))
-                .height(4)
+                .height(2)
         });
-    let bar = " █ ";
+
     Table::new(
         rows,
 [

@@ -19,34 +19,28 @@ pub struct Asset {
 #[serde(rename_all = "camelCase")]
 pub struct Earthquake {
     pub time: chrono::DateTime<chrono::Utc>,
-    pub latitude: f32,
-    pub longitude: f32,
-    pub depth: Option<f32>,
+    latitude: f32,
+    longitude: f32,
+    depth: Option<f32>,
     pub mag: Option<f32>,
-    pub mag_type: String,
-    pub nst: Option<u32>,
-    pub gap: Option<f32>,
-    pub dmin: Option<f32>,
-    pub rms: Option<f32>,
-    pub net: String,
-    pub id: String,
-    pub updated: chrono::DateTime<chrono::Utc>,
+    mag_type: String,
+    nst: Option<u32>,
+    gap: Option<f32>,
+    dmin: Option<f32>,
+    rms: Option<f32>,
+    net: String,
+    id: String,
+    updated: chrono::DateTime<chrono::Utc>,
     pub place: String,
     #[serde(rename = "type")]
     pub eq_type: String,
-    pub horizontal_error: Option<f32>,
-    pub depth_error: Option<f32>,
-    pub mag_error: Option<f32>,
-    pub mag_nst: Option<f32>,
-    pub status: String,
+    horizontal_error: Option<f32>,
+    depth_error: Option<f32>,
+    mag_error: Option<f32>,
+    mag_nst: Option<f32>,
+    status: String,
     pub location_source: String,
-    pub mag_source: String,
-}
-
-// Extremely simply data error type
-pub enum DataError {
-    ApiError,
-    CSVError
+    mag_source: String,
 }
 
 // Load client data function we return our serialized data or

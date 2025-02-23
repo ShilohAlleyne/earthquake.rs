@@ -36,11 +36,11 @@ async fn main() -> color_eyre::Result<()> {
 
     // Assign risk
     let high_occ_states = earthquake_occ_by_state.iter()
-        .map(|(state, _)| state.as_str())
+        .map(|(state, _)| state.as_str().trim())
         .collect();
 
     let high_mag_states = average_mag_by_state.iter()
-        .map(|(state, _)| state.as_str())
+        .map(|(state, _)| state.as_str().trim())
         .collect();
 
     // Render ui
@@ -57,7 +57,7 @@ async fn main() -> color_eyre::Result<()> {
 
 // Test
 // Check if client data is loaded properly,
-// Result types can be seen as intate checks/checks
+// Result types can be seen as intate checks/small tests
 #[cfg(test)]
 mod tests {
     use crate::data::{load_client_data, Asset};
@@ -67,8 +67,8 @@ mod tests {
         let client_data = load_client_data().unwrap_or_default();
         let first_asset = Asset {
             building_name: "West Anchorage High School".to_string(),
-            location: "Anchorage, Alask".to_string(),
-            full_address: "1700 Hillcrest Dr, Anchorage, AK 9951".to_string(),
+            location: "Anchorage, Alaska".to_string(),
+            full_address: "1700 Hillcrest Dr, Anchorage, AK 99517".to_string(),
         };
         
         assert_eq!(client_data.first(), Some(&first_asset));
